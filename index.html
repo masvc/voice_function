@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="音声入力をリアルタイムでテキストに変換するWebアプリケーション"
+    />
+    <meta name="keywords" content="音声認識, 文字起こし, Web Speech API" />
+    <meta name="author" content="Your Name" />
+
+    <title>音声入力エディター | リアルタイム文字起こし</title>
+
+    <!-- スタイルシートの読み込み -->
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- ブラウザ互換性の設定 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- PWA対応のためのマニフェスト（オプション） -->
+    <link rel="manifest" href="manifest.json" />
+  </head>
+
+  <body>
+    <div class="container" role="main">
+      <header class="header">
+        <h1>音声入力エディター</h1>
+      </header>
+
+      <main class="main-content">
+        <!-- 操作パネル -->
+        <section class="control-panel" aria-label="音声入力コントロール">
+          <div class="button-group">
+            <button
+              id="startButton"
+              class="btn btn-primary"
+              aria-label="録音を開始"
+            >
+              <span class="btn-icon">▶</span>
+              録音開始
+            </button>
+
+            <button
+              id="stopButton"
+              class="btn btn-danger"
+              aria-label="録音を停止"
+              disabled
+            >
+              <span class="btn-icon">■</span>
+              録音停止
+            </button>
+
+            <button
+              id="clearButton"
+              class="btn btn-secondary"
+              aria-label="テキストをクリア"
+            >
+              <span class="btn-icon">↺</span>
+              クリア
+            </button>
+          </div>
+        </section>
+
+        <!-- ステータス表示 -->
+        <section class="status-area">
+          <p id="status" class="status" role="status" aria-live="polite">
+            待機中...
+          </p>
+        </section>
+
+        <!-- エディター領域 -->
+        <section class="editor-area" aria-label="音声認識結果">
+          <textarea
+            id="outputArea"
+            class="output-textarea"
+            readonly
+            placeholder="ここに音声入力の内容が表示されます..."
+            aria-label="音声認識テキスト"
+            rows="10"
+          ></textarea>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <p class="browser-support">※ Google Chromeでの使用を推奨しています</p>
+      </footer>
+    </div>
+
+    <!-- スクリプトの読み込み -->
+    <noscript>
+      <p class="error-message">
+        このアプリケーションの実行にはJavaScriptが必要です。
+      </p>
+    </noscript>
+
+    <script src="SpeechInput.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
